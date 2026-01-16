@@ -130,16 +130,15 @@ const AboutSection = () => {
             </h3>
             <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed">
               Hi, I'm Aman Sinha, a passionate tech enthusiast currently in my third year of B.Tech in Information Technology at KIIT University. Alongside this, I'm also pursuing a Bachelor of Science in Data Science and Artificial Intelligence (CSDA) from IIT Patna.
-              I've built a strong foundation in Data Structures and Algorithms using C++, Java, and Python. Currently, I'm deepening my expertise in the MERN stack for full-stack development, while also actively exploring the fields of Data Science, Machine Learning, Artificial Intelligence, and Data Analytics.
+              I’ve built a strong foundation in Data Structures and Algorithms using C++, Java, and Python. Currently, I’m deepening my expertise in the MERN stack for full-stack development, while also actively exploring the fields of Data Science, Machine Learning, Artificial Intelligence, and Data Analytics.
             </p>
             <div className="mt-6 flex justify-center lg:justify-start">
               <div className="w-16 h-1 bg-gradient-to-r from-violet-600 to-purple-700 rounded-full" />
             </div>
-
             {/* Download Resume Button */}
             <div className="mt-8 flex justify-center lg:justify-start">
               <a
-                href={`${import.meta.env.BASE_URL}images/Resumee.pdf`}
+                href="/images/Resume.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"
@@ -151,23 +150,25 @@ const AboutSection = () => {
           </div>
 
           {/* Profile Image with Glow/Accent */}
-          <div className="lg:w-2/5 relative group">
-            {/* Purple glow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-purple-700 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500" />
-            <div className="relative bg-gradient-to-br from-gray-500 to-gray-100 rounded-2xl p-1">
-              <img
-                src={`${import.meta.env.BASE_URL}images/profile.jpg`}
-                alt="Aman Sinha"
-                className="h-64 sm:h-80 lg:h-96 w-auto object-cover rounded-xl shadow-2xl transform transition-transform duration-500 group-hover:scale-110"
+          <div className="lg:w-2/5 flex justify-center lg:justify-end mt-10 lg:mt-0">
+            <div className="relative group">
+              {/* Purple glow */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-purple-700 rounded-2xl blur opacity-20 transition-opacity duration-500 group-hover:opacity-60" />
+              {/* Frame & Img */}
+              <div className="relative bg-gradient-to-br from-gray-500 to-gray-100 rounded-2xl p-1 overflow-hidden">
+                <img
+                  src="/images/profile.jpg"
+                  alt="Aman Sinha"
+                  className="h-64 sm:h-80 lg:h-96 w-auto object-cover rounded-xl shadow-2xl transform transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              {/* Accent Dots */}
+              <div className="absolute -top-2 -right-2 w-6 h-6 bg-violet-600 rounded-full opacity-80 transition-opacity duration-500 group-hover:opacity-100 animate-pulse" />
+              <div
+                className="absolute -bottom-2 -left-2 w-4 h-4 bg-purple-500 rounded-full opacity-60 transition-opacity duration-500 group-hover:opacity-100 animate-pulse"
+                style={{ animationDelay: '1s' }}
               />
             </div>
-
-            {/* Accent Dots */}
-            <div className="absolute -top-2 -right-2 w-6 h-6 bg-violet-600 rounded-full opacity-80 transition-opacity duration-500 group-hover:opacity-100 animate-pulse" />
-            <div
-              className="absolute -bottom-2 -left-2 w-4 h-4 bg-purple-500 rounded-full opacity-60 transition-opacity duration-500 group-hover:opacity-100 animate-pulse"
-              style={{ animationDelay: '1s' }}
-            />
           </div>
         </div>
 
@@ -185,7 +186,6 @@ const AboutSection = () => {
           </div>
         </div>
       </div>
-
       {/* Bottom Accent Line */}
       <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-violet-600 to-transparent opacity-50" />
     </section>
