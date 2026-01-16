@@ -16,35 +16,35 @@ const ProjectsSection = () => {
 
 
   // Project data - replace with your actual projects
-  const projectImages = [
+  const "images/" = [
     {
       id: 1,
       title: "E-Commerce Platform",
-      image: "/images/project1.jpg",
+      image: "images/project1.jpg",
       description: "Full-stack MERN application with payment integration"
     },
     {
       id: 2,
       title: "Task Management App",
-      image: "/images/project2.jpg",
+      image: "images/project2.jpg",
       description: "React-based productivity app with real-time updates"
     },
     {
       id: 3,
       title: "Weather Dashboard",
-      image: "/images/project3.jpg",
+      image: "images/project3.jpg",
       description: "Interactive weather app with data visualization"
     },
     {
       id: 4,
       title: "Portfolio Website",
-      image: "/images/project1.jpg",
+      image: "images/project1.jpg",
       description: "Modern portfolio with 3D animations and GSAP"
     },
     {
       id: 5,
       title: "Chat Application",
-      image: "/images/project5.jpg",
+      image: "images/project5.jpg",
       description: "Real-time chat app built with Socket.io"
     }
   ];
@@ -99,7 +99,7 @@ const ProjectsSection = () => {
         end: () => `+=${horizontalRef.current.scrollWidth}`,
         pin: true,
         scrub: 1,
-        snap: 1 / (projectImages.length - 1),
+        snap: 1 / ("images/".length - 1),
         invalidateOnRefresh: true
       }
     });
@@ -187,9 +187,9 @@ const ProjectsSection = () => {
         <div
           ref={horizontalRef}
           className="flex w-max"
-          style={{ width: `${projectImages.length * 100}vw` }}
+          style={{ width: `${"images/".length * 100}vw` }}
         >
-          {projectImages.map((project, index) => (
+          {"images/".map((project, index) => (
             <div
               key={project.id}
               className="project-panel w-screen h-screen flex items-center justify-center relative"
