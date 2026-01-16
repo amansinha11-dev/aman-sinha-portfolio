@@ -1,10 +1,6 @@
-// src/components/ProjectsSection.jsx
-
-
-import React, { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FiExternalLink } from 'react-icons/fi';
+image: "images/project5.jpg",  image: "images/project1.jpg", image: "images/project2.jpg",  image: `${import.meta.env.BASE_URL}images/project2.jpg`, image: `${import.meta.env.BASE_URL}images/project1.jpg`,
+image: `${import.meta.env.BASE_URL}images/project3.jpg`,import { gsap } from 'gsap';
+image: `${import.meta.env.BASE_URL}images/project5.jpg`,import { FiExternalLink } from 'react-icons/fi';
 
 
 const ProjectsSection = () => {
