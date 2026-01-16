@@ -138,9 +138,7 @@ const AboutSection = () => {
             {/* Download Resume Button */}
             <div className="mt-8 flex justify-center lg:justify-start">
               <a
-                href=={`${import.meta.env.BASE_URL}images/Resumee.pdf`}
-                download
-                target="_blank"
+            href="/aman-sinha-portfolio/images/Resumee.pdf"                target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-700 rounded-xl text-white font-semibold shadow-lg hover:from-violet-700 hover:to-purple-800 transition duration-300"
               >
@@ -157,8 +155,7 @@ const AboutSection = () => {
               {/* Frame & Img */}
               <div className="relative bg-gradient-to-br from-gray-500 to-gray-100 rounded-2xl p-1 overflow-hidden">
                 <img
-                  src=={`${import.meta.env.BASE_URL}images/profile.jpg`}
-                  alt="Aman Sinha"
+            src="/aman-sinha-portfolio/images/profile.jpg"                  alt="Aman Sinha"
                   className="h-64 sm:h-80 lg:h-96 w-auto object-cover rounded-xl shadow-2xl transform transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
