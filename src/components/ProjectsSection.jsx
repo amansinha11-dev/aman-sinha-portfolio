@@ -1,7 +1,35 @@
-image: "images/project5.jpg",  image: "images/project1.jpg", image: "images/project2.jpg",  image: `${import.meta.env.BASE_URL}images/project2.jpg`, image: `${import.meta.env.BASE_URL}images/project1.jpg`,
-image: `${import.meta.env.BASE_URL}images/project3.jpg`,import { gsap } from 'gsap';
-image: `${import.meta.env.BASE_URL}images/project5.jpg`,import { FiExternalLink } from 'react-icons/fi';
-
+  const projectImages = [
+    {
+      id: 1,
+      title: "E-Commerce Platform",
+      image: `${import.meta.env.BASE_URL}images/project1.jpg`,
+      description: "Full-stack MERN application with payment integration"
+    },
+    {
+      id: 2,
+      title: "Task Management App",
+      image: `${import.meta.env.BASE_URL}images/project2.jpg`,
+      description: "React-based productivity app with real-time updates"
+    },
+    {
+      id: 3,
+      title: "Weather Dashboard",
+      image: `${import.meta.env.BASE_URL}images/project3.jpg`,
+      description: "Interactive weather app with data visualization"
+    },
+    {
+      id: 4,
+      title: "Portfolio Website",
+      image: `${import.meta.env.BASE_URL}images/project1.jpg`,
+      description: "Modern portfolio with 3D animations and GSAP"
+    },
+    {
+      id: 5,
+      title: "Chat Application",
+      image: `${import.meta.env.BASE_URL}images/project5.jpg`,
+      description: "Real-time chat app built with Socket.io"
+    }
+  ];
 
 const ProjectsSection = () => {
   const sectionRef = useRef(null);
