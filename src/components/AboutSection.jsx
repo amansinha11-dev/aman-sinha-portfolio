@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+"/images/  "images/import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
