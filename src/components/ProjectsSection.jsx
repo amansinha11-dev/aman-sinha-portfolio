@@ -20,7 +20,7 @@ const ProjectsSection = () => {
     {
       id: 1,
       title: "E-Commerce Platform",
-      image: "/Public/images/project12.jpg",
+      image: "/images/project1.jpg",
       description: "Full-stack MERN application with payment integration"
     },
     {
