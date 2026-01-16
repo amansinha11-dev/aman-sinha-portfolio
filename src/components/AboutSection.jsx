@@ -138,7 +138,7 @@ const AboutSection = () => {
             {/* Download Resume Button */}
             <div className="mt-8 flex justify-center lg:justify-start">
               <a
-                href="/images/Resume.pdf"
+                href="/images/Resumee.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"
