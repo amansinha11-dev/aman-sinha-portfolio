@@ -29,7 +29,7 @@ jobs:
         run: npm run build
       
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-
         with:
           name: github-pages
           path: dist
@@ -42,7 +42,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-
         with:
           name: github-pages
       
