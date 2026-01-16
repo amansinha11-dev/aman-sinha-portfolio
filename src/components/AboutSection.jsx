@@ -138,7 +138,7 @@ const AboutSection = () => {
             {/* Download Resume Button */}
             <div className="mt-8 flex justify-center lg:justify-start">
               <a
-                href="images/Resumee.pdf"
+                href="Public/images/profilee.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"
@@ -157,8 +157,7 @@ const AboutSection = () => {
               {/* Frame & Img */}
               <div className="relative bg-gradient-to-br from-gray-500 to-gray-100 rounded-2xl p-1 overflow-hidden">
                 <img
-                  src="images/profile.jpg"
-                  alt="Aman Sinha"
+Public/images/profile.jpg                  alt="Aman Sinha"
                   className="h-64 sm:h-80 lg:h-96 w-auto object-cover rounded-xl shadow-2xl transform transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
