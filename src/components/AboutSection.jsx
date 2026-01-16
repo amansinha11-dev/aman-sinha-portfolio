@@ -150,14 +150,10 @@ const AboutSection = () => {
           </div>
 
           {/* Profile Image with Glow/Accent */}
-          <div className="lg:w-2/5 flex justify-center lg:justify-end mt-10 lg:mt-0">
-            <div className="relative group">
-              {/* Purple glow */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-purple-700 rounded-2xl blur opacity-20 transition-opacity duration-500 group-hover:opacity-60" />
-              {/* Frame & Img */}
-              <div className="relative bg-gradient-to-br from-gray-500 to-gray-100 rounded-2xl p-1 overflow-hidden">
-                <img
-src="/images/profile.jpg"                alt="Aman Sinha"
+href="images/Resumee.pdf"              {/* Purple glow */}
+src={`${import.meta.env.BASE_URL}images/profile.jpg`}              {/* Frame & Img */}
+href={`${import.meta.env.BASE_URL}images/Resumee.pdf`}                <img
+src="src="images/  src={`${import.meta.env.BASE_URL}images/`/images/profile.jpg"                alt="Aman Sinha"
                   className="h-64 sm:h-80 lg:h-96 w-auto object-cover rounded-xl shadow-2xl transform transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
