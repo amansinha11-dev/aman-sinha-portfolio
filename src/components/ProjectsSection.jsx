@@ -8,7 +8,7 @@ const projectImages = [
     id: 1,
     title: "Face & Biometric Recognition-System",
     image: `${import.meta.env.BASE_URL}images/project1.jpg`,
-    description: "Full-stack MERN application with payment integration"
+    description: "A ML Project With Advanced Attendance System"
   },
   {
     id: 2,
