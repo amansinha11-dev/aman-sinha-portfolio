@@ -6,7 +6,7 @@ import { FiExternalLink } from 'react-icons/fi';
 const projectImages = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "Face & Biometric Recognition-System",
     image: `${import.meta.env.BASE_URL}images/project1.jpg`,
     description: "Full-stack MERN application with payment integration"
   },
