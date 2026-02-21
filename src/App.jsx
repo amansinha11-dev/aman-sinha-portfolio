@@ -2,6 +2,7 @@ import React from 'react'
 import HeroSection from './components/HeroSection'
 import AboutSection from './components/AboutSection'
 import ProjectsSection from './components/ProjectsSection'
+import GitHubSection from './components/GitHubSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 import Header from './components/Header'
@@ -15,6 +16,7 @@ function App() {
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
+      <GitHubSection />
       <ContactSection />
       <Footer />
     </div>
