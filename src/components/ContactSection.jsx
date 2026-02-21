@@ -37,7 +37,7 @@ const ContactSection = () => {
       icon: <FiMail className="w-6 h-6" />,
       label: "Email",
       value: "sinhaaman479@gmail.com",
-      href: "mailto:sinhaaman479gmail.com"
+      href: "mailto:sinhaaman479@gmail.com"
     },
     {
       icon: <FiPhone className="w-6 h-6" />,

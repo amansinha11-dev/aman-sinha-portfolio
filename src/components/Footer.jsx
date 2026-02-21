@@ -9,7 +9,7 @@ const Footer = () => {
     github: "https://github.com/amansinha11-dev",
     twitter: "https://twitter.com/yourusername",
     linkedin: "https://www.linkedin.com/in/aman-sinha-2412res/",
-    email: "mailto:sinhaaman478@gmail.com",
+    email: "mailto:sinhaaman479@gmail.com",
   };
 
   return (
