@@ -22,6 +22,9 @@ I am a multi-disciplinary software engineer based in Bhubaneswar, India, special
   <a href="https://amansinha11-dev.github.io/aman-sinha-portfolio/" target="_blank">
     <img src="https://img.shields.io/badge/Portfolio-Visit_Site-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="Portfolio Website" />
   </a>
+  <a href="https://www.buymeacoffee.com/amansinha" target="_blank">
+    <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee" />
+  </a>
 </div>
 
 ---
@@ -92,6 +95,23 @@ I am a multi-disciplinary software engineer based in Bhubaneswar, India, special
 
 ---
 
+## 🧠 Algorithmic Problem Solving & Activity 
+
+<div align="center">
+  <table style="border: none; border-collapse: collapse; background-color: transparent;">
+    <tr>
+      <td align="center" style="border: none; background-color: transparent;">
+        <img src="https://leetcard.jacoblin.cool/amansinha11-dev?theme=tokyonight&font=Fira%20Code&ext=activity" alt="LeetCode Stats" width="400"/>
+      </td>
+      <td align="center" style="border: none; background-color: transparent;">
+        <img src="https://github-readme-stats.vercel.app/api/wakatime?api_domain=wakatime.com&username=amansinha11-dev&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000&title_color=7C3AED" alt="WakaTime Stats" width="400"/>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
 ## 📊 Analytics & Coding Metrics Dashboard
 
 <div align="center">
@@ -114,6 +134,14 @@ I am a multi-disciplinary software engineer based in Bhubaneswar, India, special
   <a href="https://github.com/ryo-ma/github-profile-trophy">
     <img src="https://github-profile-trophy.vercel.app/?username=amansinha11-dev&theme=tokyonight&column=7&margin-w=15&no-bg=true&no-frame=true" alt="Algorithmic GitHub Trophies" />
   </a>
+
+  <br/><br/>
+  <h3>🐍 Contribution Graph Animation</h3>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/amansinha11-dev/amansinha11-dev/output/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/amansinha11-dev/amansinha11-dev/output/github-contribution-grid-snake.svg">
+    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/amansinha11-dev/amansinha11-dev/output/github-contribution-grid-snake.svg" width="100%">
+  </picture>
 </div>
 
 ---
