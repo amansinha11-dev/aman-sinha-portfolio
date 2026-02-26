@@ -16,38 +16,42 @@ const ProjectsSection = () => {
   const projectImages = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      image: "/images/project1.jpg",
-      description: "Full-stack MERN application with payment integration"
+      title: "Advanced Attendence System",
+      image: `${import.meta.env.BASE_URL}images/project1.jpg`,
+      description: "Attendence system with facial & Finger Print recognition and real-time analytics"
     },
     {
       id: 2,
-      title: "Task Management App",
-      image: "/images/project2.jpg",
-      description: "React-based productivity app with real-time updates"
+      title: "Food Deliver website & App",
+      image: `${import.meta.env.BASE_URL}images/food-delivery.gif`,
+      description: "React-based productivity platform with real-time updates",
+      link: "https://quickbite-motion-delight.vercel.app/",
     },
     {
       id: 3,
-      title: "Weather Dashboard",
-      image: "/images/project3.jpg",
-      description: "Interactive weather app with data visualization"
+      title: "Disaster Management System",
+      image: `${import.meta.env.BASE_URL}images/project3.jpg`,
+      description: "Developed a multilingual Disaster Management System prototype aligned with Punjab’s state‑level disaster‑risk‑reduction framework, supporting multiple regional languages for wider accessibility  Built a responsive web dashboard with geospatial maps, real‑time alerts, and incident reporting, allowing users to switch languages for easier emergency communication"
+                    
     },
     {
       id: 4,
       title: "Portfolio Website",
-      image: "/images/project4.jpg",
+      image: `${import.meta.env.BASE_URL}images/project4.jpg`,
       description: "Modern Portfolio With 3D Spline Animations,GSAP,Tailwind CSS"
     },
     {
       id: 5,
       title: "Chat Application",
-      image: "/images/project5.jpg",
+      image: `${import.meta.env.BASE_URL}images/project5.jpg`,
       description: "Real-time chat app built with Socket.io"
     }
   ];
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
+    // Load lottie JSON data removed — using GIF instead
 
     // Title animation
     gsap.fromTo(
@@ -112,7 +116,7 @@ const ProjectsSection = () => {
       // Image animation
       tl.fromTo(
         panel.querySelector('.project-image'),
-        { scale: 0, rotation: -20 },
+        { scale: 0.8, rotation: -5 },
         { scale: 1, rotation: 0, duration: 0.5 }
       );
 
@@ -222,9 +226,14 @@ const ProjectsSection = () => {
 
                   {/* Action buttons */}
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <button className="px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-700 text-white font-bold rounded-xl hover:from-violet-700 hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-violet-600/25">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-700 text-white font-bold rounded-xl hover:from-violet-700 hover:to-purple-800 transition-all duration-300 shadow-lg hover:shadow-violet-600/25 text-center"
+                    >
                       View Project
-                    </button>
+                    </a>
                     <button className="px-6 py-3 border-2 border-violet-600 text-violet-600 font-bold rounded-xl hover:bg-violet-600 hover:text-white transition-all duration-300">
                       View Code
                     </button>

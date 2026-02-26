@@ -7,6 +7,8 @@ import CustomCursor from "./components/CustomCursor";
 import AboutSection from "./components/AboutSection";
 import ProjectsSection from './components/ProjectsSection';
 import ContactSection from './components/ContactSection';
+import InternshipSection from './components/InternshipSection';
+import CertificatesSection from './components/CertificatesSection';
 import Footer from './components/Footer';
 import ProgressBar from './components/ProgressBar';
 
@@ -26,6 +28,12 @@ export default function App() {
         
         {/* Projects Section - Portfolio showcase */}
         <ProjectsSection />
+
+        {/* Internship Section - Work experience */}
+        <InternshipSection />
+
+        {/* Certificates Section - Certifications */}
+        <CertificatesSection />
         
         {/* Contact Section - Contact form and info */}
         <ContactSection />

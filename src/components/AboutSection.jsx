@@ -138,10 +138,8 @@ const AboutSection = () => {
             {/* Download Resume Button */}
             <div className="mt-8 flex justify-center lg:justify-start">
               <a
-                href="/images/Resume.pdf"
-                download
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`${import.meta.env.BASE_URL}images/Resume.pdf`}
+                download="Aman_Sinha_Resume.pdf"
                 className="px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-700 rounded-xl text-white font-semibold shadow-lg hover:from-violet-700 hover:to-purple-800 transition duration-300"
               >
                 Download Resume
@@ -155,11 +153,12 @@ const AboutSection = () => {
               {/* Purple glow */}
               <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-purple-700 rounded-2xl blur opacity-20 transition-opacity duration-500 group-hover:opacity-60" />
               {/* Frame & Img */}
-              <div className="relative bg-gradient-to-br from-gray-500 to-gray-100 rounded-2xl p-1 overflow-hidden">
+              <div className="relative bg-gradient-to-br from-gray-500 to-gray-100 rounded-2xl p-1">
                 <img
-                  src="/images/profile.jpg"
+                  src={`${import.meta.env.BASE_URL}images/profile.jpg`}
                   alt="Aman Sinha"
-                  className="h-64 sm:h-80 lg:h-96 w-auto object-cover rounded-xl shadow-2xl transform transition-transform duration-500 group-hover:scale-110"
+                  loading="eager"
+                  className="h-64 sm:h-80 lg:h-96 w-64 sm:w-72 lg:w-80 object-cover rounded-xl shadow-2xl transform transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               {/* Accent Dots */}

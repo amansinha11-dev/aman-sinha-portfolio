@@ -20,7 +20,7 @@ const Header = () => {
   const openContactForm = () => setContactFormOpen(true);
   const closeContactForm = () => setContactFormOpen(false);
 
-  const navItems = ["Home", "Projects", "Experience", "Contact", "About"];
+  const navItems = ["Home", "Projects", "Experience", "Certificates", "Contact", "About"];
 
   const socialLinks = {
     github: "https://github.com/amansinha11-dev",
