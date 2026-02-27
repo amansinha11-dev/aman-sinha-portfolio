@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import Spline from "@splinetool/react-spline";
+import ErrorBoundary from "./ErrorBoundary";
+
 const HeroSection = () => {
   return (
    <section className="h-screen bg-gradient-to-b
@@ -43,10 +45,12 @@ const HeroSection = () => {
       </motion.p>
       </div> 
       {/*Right Section*/}
-       <Spline
-       className="absolute xl:right-[-28%] right-0 top-[-20%] lg:top-0"
-       
-       scene="https://prod.spline.design/Hsrz2Nep6somq5ZA/scene.splinecode" />
+      <ErrorBoundary>
+        <Spline
+        className="absolute xl:right-[-28%] right-0 top-[-20%] lg:top-0"
+        
+        scene="https://prod.spline.design/Hsrz2Nep6somq5ZA/scene.splinecode" />
+      </ErrorBoundary>
    </section>
   )
 }
