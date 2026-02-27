@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <div style={{ minHeight: "100vh", background: "linear-gradient(to bottom, #4c1d95, #000)", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Arial, sans-serif" }}>
           <div style={{ textAlign: "center", padding: "2rem" }}>
             <h1 style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>Aman Sinha</h1>
-            <p style={{ fontSize: "1.2rem", opacity: 0.8 }}>Portfolio is loading... Please refresh the page.</p>
+            <p style={{ fontSize: "1.2rem", opacity: 0.8 }}>Something went wrong. Please refresh the page.</p>
           </div>
         </div>
       }
