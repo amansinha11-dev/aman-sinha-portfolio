@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { motion } from "framer-motion";
+import * as FramerMotion from "framer-motion";
 import Spline from "@splinetool/react-spline";
 import { FiArrowDown, FiGithub, FiLinkedin } from "react-icons/fi";
 import { scrollTo } from "../utils/scroll.js";
@@ -42,7 +42,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center px-6 sm:px-10 lg:px-24 max-w-4xl">
         {/* Status chip */}
-        <motion.div
+        <FramerMotion.motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8 }}
@@ -52,10 +52,10 @@ const HeroSection = () => {
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
             Available for opportunities
           </span>
-        </motion.div>
+        </FramerMotion.motion.div>
 
         {/* Heading */}
-        <motion.h1
+        <FramerMotion.motion.h1
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -75,10 +75,10 @@ const HeroSection = () => {
           <span className="text-gray-300 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-2 block">
             Full-Stack Developer
           </span>
-        </motion.h1>
+        </FramerMotion.motion.h1>
 
         {/* Subtitle */}
-        <motion.p
+        <FramerMotion.motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -93,10 +93,10 @@ const HeroSection = () => {
           Crafting robust, production-ready web applications with the MERN
           stack, backed by strong DSA foundations in C++ &amp; Python, and a
           growing expertise in AI/ML &amp; Data Analytics.
-        </motion.p>
+        </FramerMotion.motion.p>
 
         {/* CTA Buttons */}
-        <motion.div
+        <FramerMotion.motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.0, duration: 0.8 }}
@@ -115,10 +115,10 @@ const HeroSection = () => {
           >
             Get in Touch
           </button>
-        </motion.div>
+        </FramerMotion.motion.div>
 
         {/* Social row */}
-        <motion.div
+        <FramerMotion.motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5, duration: 0.8 }}
@@ -132,11 +132,11 @@ const HeroSection = () => {
           </a>
           <div className="h-5 w-px bg-gray-700" />
           <span className="text-gray-600 text-xs tracking-widest uppercase">B.Tech IT &middot; KIIT University</span>
-        </motion.div>
+        </FramerMotion.motion.div>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <FramerMotion.motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 3, duration: 1 }}
@@ -144,10 +144,10 @@ const HeroSection = () => {
         onClick={() => scrollTo("about")}
       >
         <span className="text-gray-500 text-xs tracking-widest uppercase">Scroll</span>
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}>
+        <FramerMotion.motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}>
           <FiArrowDown className="w-5 h-5 text-violet-400" />
-        </motion.div>
-      </motion.div>
+        </FramerMotion.motion.div>
+      </FramerMotion.motion.div>
     </section>
   );
 };

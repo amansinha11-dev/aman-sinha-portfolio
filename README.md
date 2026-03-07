@@ -1,13 +1,37 @@
-# React + Vite
+# Aman Sinha Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio website built with React, Vite, GSAP, Framer Motion, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Install dependencies: `npm install`
+- Start local server: `npm run dev`
+- Build (default, Netlify-compatible): `npm run build`
 
-## Expanding the ESLint configuration
+## Deployment Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-"# aman-portfolio" 
+This repo is configured for both hosts:
+
+- GitHub Pages (repo path): `/aman-sinha-portfolio/`
+- Netlify (root path): `/`
+
+The base path is selected by Vite mode in `vite.config.js`.
+
+## GitHub Pages
+
+- Build for GitHub Pages: `npm run build:github`
+- Deploy to `gh-pages` branch: `npm run deploy:github`
+
+Live URL:
+
+- https://amansinha11-dev.github.io/aman-sinha-portfolio/
+
+## Netlify
+
+- Build for Netlify: `npm run build:netlify`
+- `netlify.toml` is included with:
+	- build command: `npm run build:netlify`
+	- publish directory: `dist`
+	- SPA redirect: `/* -> /index.html`
+
+In Netlify, connect this repo and keep the default `netlify.toml` settings.

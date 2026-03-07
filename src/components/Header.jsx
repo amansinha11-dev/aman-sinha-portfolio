@@ -1,7 +1,7 @@
 // src/components/Header.jsx
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import * as FramerMotion from "framer-motion";
 import {
   FiGithub,
   FiTwitter,
@@ -47,7 +47,7 @@ const Header = () => {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20">
           {/* Logo/Name */}
-          <motion.div
+          <FramerMotion.motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -60,12 +60,12 @@ const Header = () => {
             <span className="text-xl font-bold text-white tracking-tight">
               Aman <span className="text-violet-400">Sinha</span>
             </span>
-          </motion.div>
+          </FramerMotion.motion.div>
 
           {/* Desktop Navigation */}
           <nav className="lg:flex hidden items-center gap-1">
             {navItems.map((item, idx) => (
-              <motion.button
+              <FramerMotion.motion.button
                 key={item}
                 initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ const Header = () => {
               >
                 {item}
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-purple-500 group-hover:w-3/4 transition-all duration-300 rounded-full" />
-              </motion.button>
+              </FramerMotion.motion.button>
             ))}
           </nav>
 
@@ -88,19 +88,19 @@ const Header = () => {
                 { icon: FiTwitter, href: socialLinks.twitter, delay: 0.95 },
                 { icon: FiLinkedin, href: socialLinks.linkedin, delay: 1.0 },
                 { icon: FiMail, href: socialLinks.email, delay: 1.05 },
-              ].map(({ icon: Icon, href, delay }) => (
-                <motion.a
-                  key={href}
-                  href={href}
+              ].map((social) => (
+                <FramerMotion.motion.a
+                  key={social.href}
+                  href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay, duration: 0.5 }}
+                  transition={{ delay: social.delay, duration: 0.5 }}
                   className="w-9 h-9 rounded-lg flex items-center justify-center text-gray-500 hover:text-violet-400 hover:bg-violet-500/10 transition-all duration-300"
                 >
-                  <Icon className="w-[18px] h-[18px]" />
-                </motion.a>
+                  <social.icon className="w-[18px] h-[18px]" />
+                </FramerMotion.motion.a>
               ))}
             </div>
 
@@ -108,7 +108,7 @@ const Header = () => {
             <div className="hidden md:block w-px h-6 bg-gray-700/50" />
 
             {/* Hire Me Button */}
-            <motion.button
+            <FramerMotion.motion.button
               onClick={openContactForm}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -117,7 +117,7 @@ const Header = () => {
             >
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               Hire Me
-            </motion.button>
+            </FramerMotion.motion.button>
 
             {/* Mobile Menu Toggle */}
             <button
@@ -130,9 +130,9 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
+        <FramerMotion.AnimatePresence>
           {isOpen && (
-            <motion.div
+            <FramerMotion.motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -141,7 +141,7 @@ const Header = () => {
             >
               <nav className="flex flex-col px-6 py-4 gap-1">
                 {navItems.map((item, i) => (
-                  <motion.button
+                  <FramerMotion.motion.button
                     key={item}
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
@@ -153,7 +153,7 @@ const Header = () => {
                     className="text-left text-gray-300 hover:text-white font-medium py-3 px-4 rounded-lg hover:bg-white/5 transition-all duration-200"
                   >
                     {item}
-                  </motion.button>
+                  </FramerMotion.motion.button>
                 ))}
               </nav>
 
@@ -164,15 +164,15 @@ const Header = () => {
                     { icon: FiTwitter, href: socialLinks.twitter },
                     { icon: FiLinkedin, href: socialLinks.linkedin },
                     { icon: FiMail, href: socialLinks.email },
-                  ].map(({ icon: Icon, href }) => (
+                  ].map((social) => (
                     <a
-                      key={href}
-                      href={href}
+                      key={social.href}
+                      href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-lg flex items-center justify-center text-gray-400 hover:text-violet-400 hover:bg-violet-500/10 transition-all duration-300"
                     >
-                      <Icon className="h-5 w-5" />
+                      <social.icon className="h-5 w-5" />
                     </a>
                   ))}
                 </div>
@@ -186,15 +186,15 @@ const Header = () => {
                   Hire Me
                 </button>
               </div>
-            </motion.div>
+            </FramerMotion.motion.div>
           )}
-        </AnimatePresence>
+        </FramerMotion.AnimatePresence>
       </header>
 
       {/* Contact Form Modal */}
-      <AnimatePresence>
+      <FramerMotion.AnimatePresence>
         {contactFormOpen && (
-          <motion.div
+          <FramerMotion.motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -202,7 +202,7 @@ const Header = () => {
             className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4"
             onClick={closeContactForm}
           >
-            <motion.div
+            <FramerMotion.motion.div
               initial={{ scale: 0.9, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 30 }}
@@ -273,19 +273,19 @@ const Header = () => {
 
                 <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
 
-                <motion.button
+                <FramerMotion.motion.button
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full py-3.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg shadow-violet-600/25 hover:shadow-violet-600/40 transition-all duration-300"
                 >
                   Send Message
-                </motion.button>
+                </FramerMotion.motion.button>
               </form>
-            </motion.div>
-          </motion.div>
+            </FramerMotion.motion.div>
+          </FramerMotion.motion.div>
         )}
-      </AnimatePresence>
+      </FramerMotion.AnimatePresence>
     </>
   );
 };
