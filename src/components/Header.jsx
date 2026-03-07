@@ -1,6 +1,6 @@
 // src/components/Header.jsx
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FiGithub,
@@ -15,6 +15,7 @@ import { scrollTo } from "../utils/scroll.js";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [contactFormOpen, setContactFormOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const openContactForm = () => setContactFormOpen(true);
@@ -29,121 +30,101 @@ const Header = () => {
     email: "mailto:sinhaaman479@gmail.com",
   };
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <header className="absolute w-full z-50 transition-all duration-300">
+      <header
+        className={`fixed w-full z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-gray-950/80 backdrop-blur-xl border-b border-white/5 shadow-2xl shadow-violet-950/20"
+            : "bg-transparent"
+        }`}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20">
           {/* Logo/Name */}
           <motion.div
-            initial={{ opacity: 0, x: -100 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 100,
-              damping: 25,
-              delay: 0.3,
-              duration: 1.2,
-            }}
-            className="flex items-center cursor-pointer"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex items-center cursor-pointer group"
             onClick={() => scrollTo("home")}
           >
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-gray-500 to-gray-100 flex items-center justify-center text-purple-600 font-bold text-xl mr-3">
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-violet-600 to-purple-700 flex items-center justify-center text-white font-bold text-lg mr-3 shadow-lg shadow-violet-600/25 group-hover:shadow-violet-600/50 transition-shadow duration-300">
               A
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-gray-300 to-gray-100 bg-clip-text text-transparent">
-              Aman Sinha
+            <span className="text-xl font-bold text-white tracking-tight">
+              Aman <span className="text-violet-400">Sinha</span>
             </span>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="lg:flex hidden space-x-8">
+          <nav className="lg:flex hidden items-center gap-1">
             {navItems.map((item, idx) => (
               <motion.button
                 key={item}
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 20,
-                  delay: 0.7 + idx * 0.05,
-                }}
-                className="relative text-gray-800 dark:text-gray-200 hover:text-violet-600 dark:hover:text-violet-400 font-medium transition-colors duration-300 group"
+                transition={{ delay: 0.4 + idx * 0.06, duration: 0.5 }}
+                className="relative px-4 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors duration-300 group"
                 onClick={() => scrollTo(item.toLowerCase())}
               >
                 {item}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-violet-600 group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-purple-500 group-hover:w-3/4 transition-all duration-300 rounded-full" />
               </motion.button>
             ))}
           </nav>
 
-          {/* Social Icons */}
-          <div className="md:flex hidden items-center space-x-4">
-            <motion.a
-              href={socialLinks.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.3, duration: 0.8 }}
-              className="text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300"
-            >
-              <FiGithub className="w-6 h-6" />
-            </motion.a>
-            <motion.a
-              href={socialLinks.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.35, duration: 0.8 }}
-              className="text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300"
-            >
-              <FiTwitter className="w-6 h-6" />
-            </motion.a>
-            <motion.a
-              href={socialLinks.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.4, duration: 0.8 }}
-              className="text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300"
-            >
-              <FiLinkedin className="w-6 h-6" />
-            </motion.a>
-            <motion.a
-              href={socialLinks.email}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.45, duration: 0.8 }}
-              className="text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300"
-            >
-              <FiMail className="w-6 h-6" />
-            </motion.a>
-          </div>
+          {/* Right side: socials + CTA */}
+          <div className="flex items-center gap-3">
+            {/* Social Icons (desktop) */}
+            <div className="hidden md:flex items-center gap-2">
+              {[
+                { icon: FiGithub, href: socialLinks.github, delay: 0.9 },
+                { icon: FiTwitter, href: socialLinks.twitter, delay: 0.95 },
+                { icon: FiLinkedin, href: socialLinks.linkedin, delay: 1.0 },
+                { icon: FiMail, href: socialLinks.email, delay: 1.05 },
+              ].map(({ icon: Icon, href, delay }) => (
+                <motion.a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay, duration: 0.5 }}
+                  className="w-9 h-9 rounded-lg flex items-center justify-center text-gray-500 hover:text-violet-400 hover:bg-violet-500/10 transition-all duration-300"
+                >
+                  <Icon className="w-[18px] h-[18px]" />
+                </motion.a>
+              ))}
+            </div>
 
-          {/* Hire Me Button */}
-          <motion.button
-            onClick={openContactForm}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              delay: 1.6,
-              duration: 0.8,
-              type: "spring",
-              stiffness: 100,
-              damping: 15,
-            }}
-            className="ml-4 px-4 py-2 rounded-xl bg-gradient-to-r from-gray-400 to-gray-100 text-violet-700 font-bold hover:from-violet-700 hover:to-purple-700 hover:text-white transition-all duration-500"
-          >
-            Hire Me
-          </motion.button>
+            {/* Divider */}
+            <div className="hidden md:block w-px h-6 bg-gray-700/50" />
 
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden flex items-center">
-            <button onClick={toggleMenu} className="text-gray-300">
-              {isOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
+            {/* Hire Me Button */}
+            <motion.button
+              onClick={openContactForm}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.2, duration: 0.5 }}
+              className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 text-white text-sm font-semibold shadow-lg shadow-violet-600/25 hover:shadow-violet-600/40 hover:scale-[1.03] transition-all duration-300"
+            >
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              Hire Me
+            </motion.button>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={toggleMenu}
+              className="lg:hidden ml-2 w-10 h-10 rounded-lg flex items-center justify-center text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300"
+            >
+              {isOpen ? <FiX className="h-5 w-5" /> : <FiMenu className="h-5 w-5" />}
             </button>
           </div>
         </div>
@@ -155,64 +136,54 @@ const Header = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.5 }}
-              className="md:hidden overflow-hidden bg-white dark:bg-gray-900 shadow-lg px-4 py-5 space-y-5"
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="lg:hidden overflow-hidden bg-gray-950/95 backdrop-blur-xl border-t border-white/5"
             >
-              <nav className="flex flex-col space-y-3">
-                {navItems.map((item) => (
-                  <button
+              <nav className="flex flex-col px-6 py-4 gap-1">
+                {navItems.map((item, i) => (
+                  <motion.button
                     key={item}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: i * 0.05 }}
                     onClick={() => {
                       scrollTo(item.toLowerCase());
                       toggleMenu();
                     }}
-                    className="text-gray-800 dark:text-gray-200 font-medium py-2 text-left"
+                    className="text-left text-gray-300 hover:text-white font-medium py-3 px-4 rounded-lg hover:bg-white/5 transition-all duration-200"
                   >
                     {item}
-                  </button>
+                  </motion.button>
                 ))}
               </nav>
-              <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-                <div className="flex space-x-5 mb-4">
-                  <a
-                    href={socialLinks.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-violet-600 transition duration-300"
-                  >
-                    <FiGithub className="h-5 w-5" />
-                  </a>
-                  <a
-                    href={socialLinks.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-violet-600 transition duration-300"
-                  >
-                    <FiTwitter className="h-5 w-5" />
-                  </a>
-                  <a
-                    href={socialLinks.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-violet-600 transition duration-300"
-                  >
-                    <FiLinkedin className="h-5 w-5" />
-                  </a>
-                  <a
-                    href={socialLinks.email}
-                    className="text-gray-300 hover:text-violet-600 transition duration-300"
-                  >
-                    <FiMail className="h-5 w-5" />
-                  </a>
+
+              <div className="px-6 pb-6 pt-2 border-t border-white/5">
+                <div className="flex items-center gap-4 mb-4">
+                  {[
+                    { icon: FiGithub, href: socialLinks.github },
+                    { icon: FiTwitter, href: socialLinks.twitter },
+                    { icon: FiLinkedin, href: socialLinks.linkedin },
+                    { icon: FiMail, href: socialLinks.email },
+                  ].map(({ icon: Icon, href }) => (
+                    <a
+                      key={href}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-lg flex items-center justify-center text-gray-400 hover:text-violet-400 hover:bg-violet-500/10 transition-all duration-300"
+                    >
+                      <Icon className="h-5 w-5" />
+                    </a>
+                  ))}
                 </div>
                 <button
                   onClick={() => {
                     toggleMenu();
                     openContactForm();
                   }}
-                  className="block w-full px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-violet-400 font-bold text-white text-center transition-all duration-300"
+                  className="w-full px-5 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 font-semibold text-white text-center shadow-lg shadow-violet-600/25 transition-all duration-300"
                 >
-                  Contact Me
+                  Hire Me
                 </button>
               </div>
             </motion.div>
@@ -228,105 +199,85 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4"
+            onClick={closeContactForm}
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0, y: 30 }}
+              initial={{ scale: 0.9, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.8, opacity: 0, y: 30 }}
-              transition={{
-                type: "spring",
-                damping: 30,
-                stiffness: 200,
-                duration: 0.8,
-              }}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-md p-6"
+              exit={{ scale: 0.9, opacity: 0, y: 30 }}
+              transition={{ type: "spring", damping: 30, stiffness: 200 }}
+              className="bg-gray-900 border border-white/10 rounded-2xl shadow-2xl w-full max-w-md p-8"
+              onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex justify-between items-center mb-4">
-                <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-300">
-                  Get In Touch
-                </h1>
-                <button onClick={closeContactForm}>
-                  <FiX className="w-5 h-5 text-gray-800 dark:text-gray-300 font-extrabold" />
+              <div className="flex justify-between items-center mb-6">
+                <div>
+                  <h2 className="text-2xl font-bold text-white">Get In Touch</h2>
+                  <p className="text-sm text-gray-400 mt-1">I'll get back to you soon</p>
+                </div>
+                <button
+                  onClick={closeContactForm}
+                  className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-200"
+                >
+                  <FiX className="w-5 h-5" />
                 </button>
               </div>
+
               <form
                 action="https://api.web3forms.com/submit"
                 method="POST"
-                className="space-y-4"
+                className="space-y-5"
               >
-                {/* Web3Forms Access Key */}
-                <input
-                  type="hidden"
-                  name="access_key"
-                  value="e3a6f558-08b4-4af4-bfe6-4c37d0f2a0a0"
-                />
-                {/* Optional: customize From Name */}
-                <input
-                  type="hidden"
-                  name="from_name"
-                  value="Portfolio Contact Form"
-                />
+                <input type="hidden" name="access_key" value="e3a6f558-08b4-4af4-bfe6-4c37d0f2a0a0" />
+                <input type="hidden" name="from_name" value="Portfolio Contact Form" />
 
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                  >
+                  <label htmlFor="modal-name" className="block text-sm font-medium text-gray-400 mb-1.5">
                     Name
                   </label>
                   <input
                     type="text"
-                    id="name"
+                    id="modal-name"
                     name="name"
+                    required
                     placeholder="Your Name"
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                    className="w-full px-4 py-3 bg-gray-800/60 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all duration-300 outline-none"
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                  >
+                  <label htmlFor="modal-email" className="block text-sm font-medium text-gray-400 mb-1.5">
                     Email
                   </label>
                   <input
                     type="email"
-                    id="email"
+                    id="modal-email"
                     name="email"
-                    placeholder="Your Email"
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                    required
+                    placeholder="your@email.com"
+                    className="w-full px-4 py-3 bg-gray-800/60 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all duration-300 outline-none"
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                  >
+                  <label htmlFor="modal-message" className="block text-sm font-medium text-gray-400 mb-1.5">
                     Message
                   </label>
                   <textarea
                     rows="4"
-                    id="message"
+                    id="modal-message"
                     name="message"
-                    placeholder="How can I help you?"
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200 resize-none"
+                    required
+                    placeholder="Tell me about your project..."
+                    className="w-full px-4 py-3 bg-gray-800/60 border border-gray-700/50 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all duration-300 outline-none resize-none"
                   />
                 </div>
-                {/* Honeypot for bots */}
-                <input
-                  type="checkbox"
-                  name="botcheck"
-                  className="hidden"
-                  tabIndex={-1}
-                  autoComplete="off"
-                />
+
+                <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="w-full px-4 py-2 bg-gradient-to-r from-violet-600 to-purple-700 hover:from-violet-700 hover:to-purple-800 text-white font-bold rounded-lg transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg shadow-violet-600/25 hover:shadow-violet-600/40 transition-all duration-300"
                 >
                   Send Message
                 </motion.button>

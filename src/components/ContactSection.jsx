@@ -1,237 +1,147 @@
-// src/components/ContactSection.jsx
+﻿// src/components/ContactSection.jsx
 
-import React from 'react';
-import {
-  FiMail,
-  FiPhone,
-  FiMapPin,
-  FiSend,
-  FiGithub,
-  FiLinkedin,
-  FiTwitter
-} from 'react-icons/fi';
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FiMail, FiPhone, FiMapPin, FiSend, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
 
 const ContactSection = () => {
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const formRef = useRef(null);
+  const infoRef = useRef(null);
+
   const contactInfo = [
-    {
-      icon: <FiMail className="w-6 h-6 text-white" />,
-      label: 'Email',
-      value: 'sinhaaman479@gmail.com',
-      href: 'mailto:sinhaaman479@gmail.com'
-    },
-    {
-      icon: <FiPhone className="w-6 h-6 text-white" />,
-      label: 'Phone',
-      value: '+91 12345 67890',
-      href: 'tel:+911234567890'
-    },
-    {
-      icon: <FiMapPin className="w-6 h-6 text-white" />,
-      label: 'Location',
-      value: 'Bhubaneswar, India',
-      href: '#'
-    }
+    { icon: FiMail, label: 'Email', value: 'sinhaaman479@gmail.com', href: 'mailto:sinhaaman479@gmail.com' },
+    { icon: FiPhone, label: 'Phone', value: '+91 9939558412', href: 'tel:+919939558412' },
+    { icon: FiMapPin, label: 'Location', value: 'Bhubaneswar, India', href: '#' },
   ];
 
   const socialLinks = [
-    {
-      icon: <FiGithub className="w-6 h-6 text-white" />,
-      href: 'https://github.com/amansinha11-dev',
-      label: 'GitHub'
-    },
-    {
-      icon: <FiLinkedin className="w-6 h-6 text-white" />,
-      href: 'https://www.linkedin.com/in/aman-sinha-2412res/',
-      label: 'LinkedIn'
-    },
-    {
-      icon: <FiTwitter className="w-6 h-6 text-white" />,
-      href: 'https://twitter.com/yourusername',
-      label: 'Twitter'
-    }
+    { icon: FiGithub, href: 'https://github.com/amansinha11-dev', label: 'GitHub' },
+    { icon: FiLinkedin, href: 'https://www.linkedin.com/in/aman-sinha-2412res/', label: 'LinkedIn' },
+    { icon: FiTwitter, href: 'https://twitter.com/yourusername', label: 'Twitter' },
   ];
 
-  return (
-    <section id="contact" className="py-20 px-4 relative overflow-hidden bg-black">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-900/20 to-purple-900/20" />
-      <div className="absolute top-20 left-20 w-72 h-72 bg-violet-600/20 rounded-full blur-3xl animate-pulse" />
-      <div
-        className="absolute bottom-20 right-20 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse"
-        style={{ animationDelay: '700ms' }}
-      />
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.fromTo(titleRef.current, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, scrollTrigger: { trigger: sectionRef.current, start: 'top 85%' } });
+      gsap.fromTo(subtitleRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.15, scrollTrigger: { trigger: sectionRef.current, start: 'top 85%' } });
+      gsap.fromTo(formRef.current, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.8, delay: 0.3, scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' } });
+      gsap.fromTo(infoRef.current, { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.8, delay: 0.3, scrollTrigger: { trigger: sectionRef.current, start: 'top 75%' } });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
 
-      <div className="max-w-7xl mx-auto relative z-10">
+  return (
+    <section ref={sectionRef} className="relative w-full overflow-hidden bg-black py-24 sm:py-28" id="contact">
+      <div className="absolute top-1/3 -left-32 w-96 h-96 bg-violet-600/[0.06] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 -right-32 w-96 h-96 bg-purple-600/[0.06] rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-300 to-gray-100 bg-clip-text text-transparent">
-            Let's Work Together
-          </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Have a project in mind? I'd love to hear about it. Send me a message and let's create something amazing together.
-          </p>
+          <p ref={subtitleRef} className="text-violet-400 font-medium tracking-widest uppercase text-sm mb-3 opacity-0">Get In Touch</p>
+          <h2 ref={titleRef} className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent opacity-0 tracking-tight">Let's Work Together</h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-violet-600 to-purple-600 mx-auto rounded-full mt-4" />
+          <p className="text-gray-400 mt-4 max-w-xl mx-auto text-lg">Have a project in mind? Send me a message and let's create something amazing.</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto items-start">
           {/* Contact Form */}
-          <div className="p-8 backdrop-blur-md bg-gray-900/50 border border-violet-500/20 rounded-2xl shadow-2xl">
-            <form
-              action="https://api.web3forms.com/submit"
-              method="POST"
-              className="space-y-6"
-            >
-              {/* Web3Forms access key */}
-              <input
-                type="hidden"
-                name="access_key"
-                value="e3a6f558-08b4-4af4-bfe6-4c37d0f2a0a0"
-              />
-              {/* Optional: customize the From Name in the email */}
-              <input
-                type="hidden"
-                name="from_name"
-                value="Portfolio Contact Form"
-              />
+          <div ref={formRef} className="lg:col-span-3 opacity-0">
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-600/20 to-purple-600/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative p-6 sm:p-8 bg-gray-900/60 backdrop-blur-sm border border-white/5 rounded-2xl hover:border-violet-500/20 hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-violet-950/10">
+                <form action="https://api.web3forms.com/submit" method="POST" className="space-y-5">
+                  <input type="hidden" name="access_key" value="e3a6f558-08b4-4af4-bfe6-4c37d0f2a0a0" />
+                  <input type="hidden" name="from_name" value="Portfolio Contact Form" />
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-gray-300">
-                    Name *
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition-all duration-300"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-gray-300">
-                    Email *
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition-all duration-300"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1.5">Name</label>
+                      <input id="name" name="name" type="text" required placeholder="Your name" className="w-full px-4 py-3 bg-gray-800/50 border border-white/10 rounded-xl text-gray-200 placeholder-gray-600 focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 outline-none transition-all duration-300 text-sm" />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1.5">Email</label>
+                      <input id="email" name="email" type="email" required placeholder="you@example.com" className="w-full px-4 py-3 bg-gray-800/50 border border-white/10 rounded-xl text-gray-200 placeholder-gray-600 focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 outline-none transition-all duration-300 text-sm" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-400 mb-1.5">Subject</label>
+                    <input id="subject" name="subject" type="text" required placeholder="What's this about?" className="w-full px-4 py-3 bg-gray-800/50 border border-white/10 rounded-xl text-gray-200 placeholder-gray-600 focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 outline-none transition-all duration-300 text-sm" />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-1.5">Message</label>
+                    <textarea id="message" name="message" required rows={5} placeholder="Tell me about your project..." className="w-full px-4 py-3 bg-gray-800/50 border border-white/10 rounded-xl text-gray-200 placeholder-gray-600 focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 outline-none transition-all duration-300 resize-none text-sm" />
+                  </div>
+
+                  <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" />
+
+                  <button type="submit" className="w-full py-3.5 px-6 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg shadow-violet-600/20">
+                    <FiSend className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                    Send Message
+                  </button>
+                </form>
               </div>
-
-              <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium text-gray-300">
-                  Subject *
-                </label>
-                <input
-                  id="subject"
-                  name="subject"
-                  type="text"
-                  required
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition-all duration-300"
-                  placeholder="What's this about?"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-gray-300">
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-gray-200 placeholder-gray-400 focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition-all duration-300 resize-none"
-                  placeholder="Tell me about your project..."
-                />
-              </div>
-
-              {/* Honeypot Field */}
-              <input
-                type="checkbox"
-                name="botcheck"
-                className="hidden"
-                tabIndex={-1}
-                autoComplete="off"
-              />
-
-              <button
-                type="submit"
-                className="w-full py-4 px-6 bg-gradient-to-r from-violet-600 to-purple-700 hover:from-violet-700 hover:to-purple-800 text-white font-semibold rounded-lg shadow-glow transition-all duration-300 group"
-              >
-                <div className="flex items-center justify-center gap-2">
-                  <FiSend className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  Send Message
-                </div>
-              </button>
-            </form>
+            </div>
           </div>
 
-          {/* Contact Information & Social Links */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-200 mb-6">Get in Touch</h3>
-              <p className="text-gray-300 mb-8">
-                I'm always open to discussing new opportunities, creative projects, or partnerships.
-                Feel free to reach out through any of the channels below.
-              </p>
-            </div>
-
-            {/* Contact Info Cards */}
-            <div className="space-y-4">
-              {contactInfo.map((info, index) => (
-                <a
-                  key={index}
-                  href={info.href}
-                  className="flex items-center gap-4 p-4 bg-gray-900/60 backdrop-blur-md rounded-xl shadow-lg hover:shadow-violet-500/25 transition"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div>{info.icon}</div>
+          {/* Contact Info Sidebar */}
+          <div ref={infoRef} className="lg:col-span-2 space-y-5 opacity-0">
+            {/* Contact Cards */}
+            {contactInfo.map((info, index) => {
+              const Icon = info.icon;
+              return (
+                <a key={index} href={info.href} target={info.href !== '#' ? '_blank' : undefined} rel="noopener noreferrer" className="group flex items-center gap-4 p-4 bg-gray-900/60 backdrop-blur-sm border border-white/5 rounded-xl hover:border-violet-500/20 hover:-translate-y-0.5 transition-all duration-300">
+                  <div className="w-11 h-11 rounded-xl bg-violet-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-violet-500/20 transition-colors duration-300">
+                    <Icon className="w-5 h-5 text-violet-400" />
+                  </div>
                   <div>
-                    <p className="text-sm text-gray-400">{info.label}</p>
-                    <p className="text-white font-medium">{info.value}</p>
+                    <p className="text-xs text-gray-500 uppercase tracking-wider">{info.label}</p>
+                    <p className="text-sm text-white font-medium">{info.value}</p>
                   </div>
                 </a>
-              ))}
-            </div>
+              );
+            })}
 
             {/* Social Links */}
-            <div>
-              <h4 className="text-lg font-semibold text-gray-200 mb-4">Connect With Me</h4>
-              <div className="flex gap-4">
-                {socialLinks.map((social, idx) => (
-                  <a
-                    key={idx}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-xl bg-gradient-to-r from-violet-600 to-purple-700 flex items-center justify-center text-white hover:shadow-lg hover:shadow-violet-500/25 transition-all duration-300"
-                    aria-label={social.label}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
+            <div className="p-4 bg-gray-900/60 backdrop-blur-sm border border-white/5 rounded-xl shadow-lg shadow-violet-950/10">
+              <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">Connect</p>
+              <div className="flex gap-3">
+                {socialLinks.map((social, idx) => {
+                  const Icon = social.icon;
+                  return (
+                    <a key={idx} href={social.href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-400 hover:bg-violet-500/20 hover:text-violet-300 transition-all duration-300" aria-label={social.label}>
+                      <Icon className="w-4.5 h-4.5" />
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Availability Status */}
-            <div className="p-6 backdrop-blur-md bg-gradient-to-r from-violet-600/10 to-purple-700/10 border border-violet-500/20 rounded-2xl">
+            {/* Availability */}
+            <div className="p-4 bg-gray-900/60 backdrop-blur-sm border border-white/5 rounded-xl shadow-lg shadow-emerald-950/10">
               <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                <div className="relative flex-shrink-0">
+                  <div className="w-2.5 h-2.5 bg-emerald-400 rounded-full" />
+                  <div className="absolute inset-0 w-2.5 h-2.5 bg-emerald-400 rounded-full animate-ping opacity-75" />
+                </div>
                 <div>
-                  <p className="font-medium text-green-400">Available for new projects</p>
-                  <p className="text-sm text-gray-400">Currently accepting freelance work</p>
+                  <p className="text-sm font-medium text-emerald-400">Available for opportunities</p>
+                  <p className="text-xs text-gray-500">Currently accepting new projects</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-violet-600/50 to-transparent" />
     </section>
   );
 };

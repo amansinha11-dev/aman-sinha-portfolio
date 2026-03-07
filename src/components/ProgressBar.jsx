@@ -13,11 +13,12 @@ const ProgressBar = () => {
     const updateProgress = () => {
       const scrollTop = window.pageYOffset;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       setScrollProgress(scrollPercent);
     };
 
-    window.addEventListener('scroll', updateProgress);
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
     
     return () => window.removeEventListener('scroll', updateProgress);
   }, []);
