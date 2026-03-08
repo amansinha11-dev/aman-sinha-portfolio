@@ -1,20 +1,24 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import * as FramerMotion from "framer-motion";
 import Spline from "@splinetool/react-spline";
 import { FiArrowDown, FiGithub, FiLinkedin } from "react-icons/fi";
 import { scrollTo } from "../utils/scroll.js";
 
 const HeroSection = () => {
-  const showSpline = useMemo(() => {
-    if (typeof window === "undefined") return true;
+  const [showSpline, setShowSpline] = useState(true);
 
-    const isTouchOrSmall = window.matchMedia("(max-width: 1023px), (pointer: coarse), (hover: none)").matches;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const lowPowerDevice =
-      (typeof navigator.hardwareConcurrency === "number" && navigator.hardwareConcurrency <= 4) ||
-      (typeof navigator.deviceMemory === "number" && navigator.deviceMemory <= 4);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
 
-    return !(isTouchOrSmall || prefersReducedMotion || lowPowerDevice);
+    // Render Spline on all devices/browsers that can create a WebGL context.
+    const canvas = document.createElement("canvas");
+    const supportsWebGL =
+      !!window.WebGLRenderingContext &&
+      !!(canvas.getContext("webgl") || canvas.getContext("experimental-webgl") || canvas.getContext("webgl2"));
+
+    if (!supportsWebGL) {
+      setShowSpline(false);
+    }
   }, []);
 
   return (
@@ -26,7 +30,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-violet-950/10 via-transparent to-black/60 z-[1] pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/60 to-transparent z-[1] pointer-events-none" />
 
-      {/* Spline 3D Scene — only for capable devices */}
+      {/* Spline 3D Scene — render by default, fallback only if WebGL is unavailable */}
       {showSpline ? (
         <div className="absolute top-[-10%] right-[-15%] w-[80%] lg:w-[70%] h-[120%] z-0">
           <Spline
