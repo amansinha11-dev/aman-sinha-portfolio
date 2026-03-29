@@ -43,15 +43,15 @@ const ContactSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p ref={subtitleRef} className="text-violet-400 font-medium tracking-widest uppercase text-sm mb-3 opacity-0">Get In Touch</p>
-          <h2 ref={titleRef} className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent opacity-0 tracking-tight">Let's Work Together</h2>
+          <p ref={subtitleRef} className="text-violet-400 font-medium tracking-widest uppercase text-sm mb-3">Get In Touch</p>
+          <h2 ref={titleRef} className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent tracking-tight">Let's Work Together</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-violet-600 to-purple-600 mx-auto rounded-full mt-4" />
           <p className="text-gray-400 mt-4 max-w-xl mx-auto text-lg">Have a project in mind? Send me a message and let's create something amazing.</p>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto items-start">
           {/* Contact Form */}
-          <div ref={formRef} className="lg:col-span-3 opacity-0">
+          <div ref={formRef} className="lg:col-span-3">
             <div className="relative group">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-600/20 to-purple-600/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative p-6 sm:p-8 bg-gray-900/60 backdrop-blur-sm border border-white/5 rounded-2xl hover:border-violet-500/20 hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-violet-950/10">
@@ -92,7 +92,7 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Info Sidebar */}
-          <div ref={infoRef} className="lg:col-span-2 space-y-5 opacity-0">
+          <div ref={infoRef} className="lg:col-span-2 space-y-5">
             {/* Contact Cards */}
             {contactInfo.map((info, index) => {
               const Icon = info.icon;

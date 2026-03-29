@@ -223,17 +223,17 @@ const CertificatesSection = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-14 sm:mb-16">
-          <h2 ref={titleRef} className="text-4xl sm:text-5xl font-bold text-white opacity-0 tracking-[0.12em] uppercase flex items-center justify-center gap-4">
+          <h2 ref={titleRef} className="text-4xl sm:text-5xl font-bold text-white tracking-[0.12em] uppercase flex items-center justify-center gap-4">
             <span className="w-16 h-px bg-gradient-to-r from-transparent to-violet-400/70" />
             Certificates
             <span className="w-16 h-px bg-gradient-to-l from-transparent to-violet-400/70" />
           </h2>
-          <p ref={subtitleRef} className="text-gray-400 mt-4 text-lg opacity-0">Showcasing certifications and achievements</p>
+          <p ref={subtitleRef} className="text-gray-400 mt-4 text-lg">Showcasing certifications and achievements</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {certificates.map((cert, index) => (
-            <div key={cert.id} ref={(el) => (cardsRef.current[index] = el)} className="group relative opacity-0">
+            <div key={cert.id} ref={(el) => (cardsRef.current[index] = el)} className="group relative">
               <div className={`absolute -inset-0.5 bg-gradient-to-r ${cardThemes[index % 3].glow} rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500`} />
               <div data-cardglow className={`absolute -bottom-6 left-1/2 -translate-x-1/2 w-[72%] h-10 bg-gradient-to-r ${cardThemes[index % 3].glow} blur-2xl opacity-55 pointer-events-none`} />
 
@@ -250,14 +250,14 @@ const CertificatesSection = () => {
                   </a>
                 </div>
 
-                <h3 className="text-4xl font-semibold text-white/95 leading-tight mb-3 line-clamp-2">{cert.title}</h3>
+                <h3 className="text-xl sm:text-2xl font-semibold text-white/95 leading-tight mb-3">{cert.title}</h3>
 
-                <div className="flex flex-wrap items-center gap-3 text-xl text-gray-300/90 mb-4">
+                <div className="flex flex-wrap items-center gap-3 text-sm sm:text-base text-gray-300/90 mb-4">
                   <span className="font-semibold text-violet-300">{cert.issuer}</span>
                   <span className="flex items-center gap-1 text-gray-400"><FiCalendar className="w-3.5 h-3.5" />{cert.date}</span>
                 </div>
 
-                <p className="text-gray-300/80 text-base sm:text-lg leading-relaxed flex-grow line-clamp-4">{cert.description}</p>
+                <p className="text-gray-300/80 text-sm sm:text-base leading-relaxed flex-grow">{cert.description}</p>
 
                 <div className="mt-4 flex flex-wrap gap-2 pb-4 border-b border-white/10">
                   {getTagList(cert).map((tag) => (
@@ -268,8 +268,8 @@ const CertificatesSection = () => {
                 </div>
 
                 <div className="mt-4">
-                  <a href={cert.credentialLink} target="_blank" rel="noopener noreferrer" className={`w-full inline-flex items-center justify-between px-4 py-3 rounded-xl bg-gradient-to-r ${cardThemes[index % 3].btn} text-white text-2xl font-semibold border border-white/10 hover:border-white/20 transition-all`}>
-                    <span className="text-lg">View Credential</span>
+                  <a href={cert.credentialLink} target="_blank" rel="noopener noreferrer" className={`w-full inline-flex items-center justify-between px-4 py-3 rounded-xl bg-gradient-to-r ${cardThemes[index % 3].btn} text-white text-base font-semibold border border-white/10 hover:border-white/20 transition-all`}>
+                    <span className="text-sm sm:text-base">View Credential</span>
                     <span className="inline-flex items-center gap-2 text-white/90">
                       <FiExternalLink className="w-5 h-5" />
                       <FiExternalLink className="w-5 h-5" />
