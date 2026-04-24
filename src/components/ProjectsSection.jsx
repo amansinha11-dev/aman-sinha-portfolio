@@ -60,8 +60,8 @@ const projects = [
   },
   {
     id: 5,
-    title: 'Realtime Chat Application',
-    image: `${import.meta.env.BASE_URL}images/project5.jpg`,
+    title: 'Money Mentor',
+    image: `${import.meta.env.BASE_URL}images/image5.png`,
     status: 'Live',
     category: 'COMMUNICATION',
     description: 'Low-latency chat experience with websocket rooms, typing indicators, and session persistence.',
@@ -69,7 +69,7 @@ const projects = [
     team: '3 members',
     impact: 'Sub-250ms message sync',
     techStack: ['React', 'Node.js', 'Socket.io', 'Express'],
-    liveLink: '#',
+    liveLink: 'https://money-mentor-zeta.vercel.app/',
     githubLink: '#',
   },
 ];
